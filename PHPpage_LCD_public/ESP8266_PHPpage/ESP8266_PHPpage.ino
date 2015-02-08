@@ -10,7 +10,7 @@ Modifié par S'Tonfute le 05/02/15
 
 // Set a password so that people can't just insert values by visiting the data entry page
 // in their browser. Must be consistent with $passcode in data.php.
-#define PASSCODE ""
+#define PASSCODE "password"
 
 #define SENDDELAY 180  // Seconds between sending data. Try to keep under 3 digits.
 
