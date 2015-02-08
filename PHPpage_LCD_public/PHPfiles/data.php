@@ -4,18 +4,10 @@
 	$curtime = date('H:i:s');
 	
 	// Get values.
-	$password = $_GET['code'];
-	$lum = $_GET['l'];
-	$temp = $_GET['t'];
-	$hum = $_GET['h'];
+	$key = $_GET['key'];
 	
-	// Set password. Must be consistent with PASSCODE in Arduino code.
-	$passcode = "";
-	
-	// Check if password is right.
-	if(isset($password) && ($password == $passcode)){
-		// If all three values are present, insert it into the MySQL database.
-		if(isset($lum)&&isset($lum)&&isset($lum)){
+// If all three values are present, insert it into the MySQL database.
+		if(isset($key)){
 			// Database credentials
 			$servername = "";
 			$username = "";
@@ -29,8 +21,8 @@
 			}
 
 			// Insert values into table.
-			$sql = "INSERT INTO data (date, time, temp, hum, lum)
-			VALUES ('$curdate', '$curtime', $temp, $hum, $lum)";
+			$sql = "INSERT INTO data (date, time, keys)
+			VALUES ('$curdate', '$curtime', $key)";
 
 			if (mysqli_query($conn, $sql)) {
 				echo "OK";
@@ -41,5 +33,5 @@
 			// Close connection.
 			mysqli_close($conn);
 		}
-	}
+
 ?>
