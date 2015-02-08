@@ -48,20 +48,16 @@
 				printf("The database has %d entries.", $row_cnt);
 			}	
 			// Get the most recent 25 entries.
-			$result = mysqli_query($conn, "SELECT date, time, temp, hum, lum FROM data ORDER BY date DESC, time DESC  LIMIT 25");
-			echo "<table><tr><th>Date</th><th>Time</th><th>Temperature</th><th>Humidity</th><th>Brightness</th></tr>";
+			$result = mysqli_query($conn, "SELECT date, time, keys FROM data ORDER BY date DESC, time DESC  LIMIT 25");
+			echo "<table><tr><th>Date</th><th>Time</th><th>Keystrokes</th></tr>";
 			while($row = mysqli_fetch_assoc($result)) {
 				echo "<tr><td>";
 				echo $row["date"];
 				echo "</td><td>";
 				echo $row["time"];
 				echo "</td><td>";
-				echo $row["temp"];
-				echo "&deg;C</td><td>";
-				echo $row["hum"];
-				echo "%</td><td>";
-				echo $row["lum"];
-				echo "/1024</td></tr>";
+				echo $row["keys"];
+				echo "</td><td>";
 			}
 			echo "</tr></table>";
 
