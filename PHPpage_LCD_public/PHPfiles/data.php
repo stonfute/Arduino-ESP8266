@@ -1,6 +1,6 @@
 <?php
 	// Current date and time.
-	$curdate = date('m-d-Y');
+	$curdate = date('m/d/Y');
 	$curtime = date('H:i:s');
 	
 	// Get values.
